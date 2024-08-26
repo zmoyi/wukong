@@ -1,0 +1,14 @@
+{
+  "name": "wukong/im",
+  "type": "library",
+  "license": "MIT",
+  "description": "Webman plugin wukong/im",
+  "require": {
+    "guzzlehttp/guzzle": "^7.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "Wukong\\Im\\": "src"
+    }
+  }
+}
