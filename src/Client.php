@@ -24,10 +24,9 @@ class Client
     /**
      * @param string $url
      * @param array $data
-     * @return Exception|GuzzleException|ResponseInterface
      * @throws Exception
      */
-    private function post(string $url,array $data): Exception|GuzzleException|Response
+    private function post(string $url,array $data)
     {
         $config = $this->getConfig();
         $http = Http::getInstance($config)->getClient();
@@ -49,7 +48,7 @@ class Client
      * 获取数据
      * @throws Exception
      */
-    public function get(string $url): Exception|string|GuzzleException|ResponseInterface
+    public function get(string $url)
     {
         $config = $this->getConfig();
         $http = Http::getInstance($config)->getClient();
@@ -74,7 +73,7 @@ class Client
     /**
      * @throws Exception
      */
-    public function getRoute(string $uid): Exception|string|GuzzleException
+    public function getRoute(string $uid)
     {
         $url = $this->getConfig().'/route?uid='.$uid;
         return $this->get($url);
@@ -89,7 +88,7 @@ class Client
      * @return Exception|string|GuzzleException
      * @throws Exception
      */
-    public function getRouteBatch(array $uids): Exception|string|GuzzleException
+    public function getRouteBatch(array $uids)
     {
         $url = $this->getConfig().'/route/batch';
         return $this->post($url,$uids);
@@ -112,7 +111,7 @@ class Client
      * }
      * @throws Exception
      */
-    public function userToken(array $data): Exception|string|GuzzleException
+    public function userToken(array $data)
     {
         $url = $this->getConfig().'/user/token';
         return $this->post($url,$data);
@@ -130,7 +129,7 @@ class Client
      * [uid123,uid345,uid456...] // 需要查询在线状态的用户uid列表
      * @throws Exception
      */
-    public function userOnlineStatus(array $uids): Exception|string|GuzzleException
+    public function userOnlineStatus(array $uids)
     {
         $url = $this->getConfig().'/user/onlinestatus';
         return $this->post($url,$uids);
@@ -150,7 +149,7 @@ class Client
      * }
      * @throws Exception
      */
-    public function userSystemUidsAdd(array $uids): Exception|string|GuzzleException
+    public function userSystemUidsAdd(array $uids)
     {
         $url = $this->getConfig().'/user/systemuids_add';
         return $this->post($url,$uids);
@@ -170,7 +169,7 @@ class Client
      * }
      * @throws Exception
      */
-    public function userSystemUidsRemove(array $uids): Exception|string|GuzzleException
+    public function userSystemUidsRemove(array $uids)
     {
         $url = $this->getConfig().'/user/systemuids_remove';
         return $this->post($url,$uids);
@@ -191,7 +190,7 @@ class Client
      * }
      * @throws Exception
      */
-    public function userDeviceQuit(array $data): Exception|string|GuzzleException
+    public function userDeviceQuit(array $data)
     {
         $url = $this->getConfig().'/user/device_quit';
         return $this->post($url,$data);
@@ -215,7 +214,7 @@ class Client
      * }
      * @throws Exception
      */
-    public function channel(array $data): Exception|string|GuzzleException
+    public function channel(array $data)
     {
         $url = $this->getConfig().'/channel';
         return $this->post($url,$data);
@@ -236,7 +235,7 @@ class Client
      * }
      * @throws Exception
      */
-    public function channelDelete(array $data): Exception|string|GuzzleException
+    public function channelDelete(array $data)
     {
         $url = $this->getConfig().'/channel/delete';
         return $this->post($url,$data);
@@ -260,7 +259,7 @@ class Client
      * }
      * @throws Exception
      */
-    public function channelSubscriberAdd(array $data): Exception|string|GuzzleException
+    public function channelSubscriberAdd(array $data)
     {
         $url = $this->getConfig().'/channel/subscriber_add';
         return $this->post($url,$data);
@@ -281,7 +280,7 @@ class Client
      * "subscribers": [uid1,uid2,...], // 订阅者集合
      * }
      */
-    public function channelSubscriberRemove(array $data): Exception|string|GuzzleException
+    public function channelSubscriberRemove(array $data)
     {
         $url = $this->getConfig().'/channel/subscriber_remove';
         return $this->post($url,$data);
@@ -302,7 +301,7 @@ class Client
      * "uids": [uid1,uid2,...], // 要拉黑的用户uid集合
      * }
      */
-    public function channelBlacklistAdd(array $data): Exception|string|GuzzleException
+    public function channelBlacklistAdd(array $data)
     {
         $url = $this->getConfig().'/channel/blacklist_add';
         return $this->post($url,$data);
@@ -321,7 +320,7 @@ class Client
      * "uids": [uid1,uid2,...], // 用户uid集合
      * }
      */
-    public function channelBlacklistRemove(array $data): Exception|string|GuzzleException
+    public function channelBlacklistRemove(array $data)
     {
         $url = $this->getConfig().'/channel/blacklist_remove';
         return $this->post($url,$data);
@@ -342,7 +341,7 @@ class Client
      * "uids": [uid1,uid2,...], // 用户uid集合
      * }
      */
-    public function channelBlacklistSet(array $data): Exception|string|GuzzleException
+    public function channelBlacklistSet(array $data)
     {
         $url = $this->getConfig().'/channel/blacklist_set';
         return $this->post($url,$data);
@@ -363,7 +362,7 @@ class Client
      * "uids": [uid1,uid2,...], // 用户uid集合
      * }
      */
-    public function channelWhitelistAdd(array $data): Exception|string|GuzzleException
+    public function channelWhitelistAdd(array $data)
     {
         $url = $this->getConfig().'/channel/whitelist_add';
         return $this->post($url,$data);
@@ -384,7 +383,7 @@ class Client
      * "uids": [uid1,uid2,...], // 用户uid集合
      * }
      */
-    public function channelWhitelistRemove(array $data): Exception|string|GuzzleException
+    public function channelWhitelistRemove(array $data)
     {
         $url = $this->getConfig().'/channel/whitelist_remove';
         return $this->post($url,$data);
@@ -405,7 +404,7 @@ class Client
      * "uids": [uid1,uid2,...], // 用户uid集合
      * }
      */
-    public function channelWhitelistSet(array $data): Exception|string|GuzzleException
+    public function channelWhitelistSet(array $data)
     {
         $url = $this->getConfig().'/channel/whitelist_set';
         return $this->post($url,$data);
@@ -435,7 +434,7 @@ class Client
      * "subscribers": ["uid123", "uid234", "..."] // 订阅者 如果此字段有值，表示消息只发给指定的订阅者,没有值则发给频道内所有订阅者
      * }
      */
-    public function messageSend(array $data): Exception|string|GuzzleException
+    public function messageSend(array $data)
     {
         $url = $this->getConfig().'/message/send';
         return $this->post($url,$data);
@@ -461,7 +460,7 @@ class Client
      * "subscribers": [uid123,uid234,...] // 接收者的uid，分批指定，每次建议 1000-10000之间，视系统情况而定
      * }
      */
-    public function messageSendBatch(array $data): Exception|string|GuzzleException
+    public function messageSendBatch(array $data)
     {
         $url = $this->getConfig().'/message/sendbatch';
         return $this->post($url,$data);
@@ -486,7 +485,7 @@ class Client
      * "pull_mode": 1 // 拉取模式 0:向下拉取 1:向上拉取
      * }
      */
-    public function channelMessageSync(array $data): Exception|string|GuzzleException
+    public function channelMessageSync(array $data)
     {
         $url = $this->getConfig().'/channel/messagesync';
         return $this->post($url,$data);
@@ -506,7 +505,7 @@ class Client
      * "limit": 100 //  消息数量限制
      * }
      */
-    public function messageSync(array $data): Exception|string|GuzzleException
+    public function messageSync(array $data)
     {
         $url = $this->getConfig().'/message/sync';
         return $this->post($url,$data);
@@ -526,7 +525,7 @@ class Client
      * "last_message_seq": 0 //  客户端本地最后一条命令消息的messageSeq，如果本地没有命令消息则为0
      * }
      */
-    public function messageSyncAck(array $data): Exception|string|GuzzleException
+    public function messageSyncAck(array $data)
     {
         $url = $this->getConfig().'/message/syncack';
         return $this->post($url,$data);
@@ -548,7 +547,7 @@ class Client
      * "msg_count": 20 // 每个会话获取最大的消息数量，一般为app点进去第一屏的数据
      * }
      */
-    public function conversationSync(array $data): Exception|string|GuzzleException
+    public function conversationSync(array $data)
     {
         $url = $this->getConfig().'/conversation/sync';
         return $this->post($url,$data);
@@ -570,7 +569,7 @@ class Client
      * "unread": 0 // 未读消息数量
      * }
      */
-    public function conversationSetUnread(array $data): Exception|string|GuzzleException
+    public function conversationSetUnread(array $data)
     {
         $url = $this->getConfig().'/conversations/setUnread';
         return $this->post($url,$data);
@@ -591,7 +590,7 @@ class Client
      * "channel_type": 1 // 频道类型
      * }
      */
-    public function conversationDelete(array $data): Exception|string|GuzzleException
+    public function conversationDelete(array $data)
     {
         $url = $this->getConfig().'/conversations/delete';
         return $this->post($url,$data);
