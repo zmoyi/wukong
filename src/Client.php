@@ -3,6 +3,7 @@
 namespace Wukong\Im;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Psr7\Response;
 use Psr\Http\Message\ResponseInterface;
 
 class Client
@@ -26,7 +27,7 @@ class Client
      * @return Exception|GuzzleException|ResponseInterface
      * @throws Exception
      */
-    private function post(string $url,array $data): Exception|GuzzleException|ResponseInterface
+    private function post(string $url,array $data): Exception|GuzzleException|Response
     {
         $config = $this->getConfig();
         $http = Http::getInstance($config)->getClient();
