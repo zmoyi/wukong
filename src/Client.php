@@ -3,6 +3,7 @@
 namespace Wukong\Im;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
+use Psr\Http\Message\ResponseInterface;
 
 class Client
 {
@@ -22,20 +23,19 @@ class Client
     /**
      * @param string $url
      * @param array $data
-     * @return Exception|GuzzleException|string
+     * @return Exception|GuzzleException|ResponseInterface
      * @throws Exception
      */
-    private function post(string $url,array $data): Exception|string|GuzzleException
+    private function post(string $url,array $data): Exception|GuzzleException|ResponseInterface
     {
         $config = $this->getConfig();
         $http = Http::getInstance($config)->getClient();
         try {
-            $response = $http->post(
+            return $http->post(
                 $url,[
                     'json' => $data
                 ]
             );
-            return $response->getBody()->getContents();
         } catch (GuzzleException $e) {
             return $e;
         }
@@ -44,16 +44,16 @@ class Client
     // get
 
     /**
-     * @throws Exception
-     * @return Exception|string|GuzzleException
+     * @return Exception|GuzzleException|ResponseInterface|string
      * 获取数据
+     * @throws Exception
      */
-    public function get(string $url): Exception|string|GuzzleException
+    public function get(string $url): Exception|string|GuzzleException|ResponseInterface
     {
         $config = $this->getConfig();
         $http = Http::getInstance($config)->getClient();
         try {
-            $response = $http->get(
+            return $http->get(
                 $url,[
                     //设置请求头为json格式
                     'headers' => [
@@ -61,7 +61,6 @@ class Client
                     ],
                 ]
             );
-            return $response->getBody()->getContents();
         } catch (GuzzleException $e) {
             return $e;
         }
